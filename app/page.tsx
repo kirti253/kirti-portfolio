@@ -7,7 +7,12 @@ export default function Home() {
     <div>
       <h1>Hello World</h1>
       <Button>Click me</Button>
-      <h1>Kirti</h1>
+      <h1>Kirti's Portfolio</h1>
+      <p>I am a software engineer</p>
+      <p>I am a software engineer</p>
+      <p>I am a software engineer</p>
+      <p>I am a software engineer</p>
+      <p>I am a software engineer</p>
     </div>
   );
 }
