@@ -9,10 +9,6 @@ export default function Home() {
       <Button>Click me</Button>
       <h1>Kirti's Portfolio</h1>
       <p>I am a software engineer</p>
-      <p>I am a software engineer</p>
-      <p>I am a software engineer</p>
-      <p>I am a software engineer</p>
-      <p>I am a software engineer</p>
     </div>
   );
 }
