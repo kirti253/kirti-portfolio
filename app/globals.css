@@ -12,6 +12,16 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/* Custom colors for better dark mode support */
+@media (prefers-color-scheme: dark) {
+  .text-yellow-400 {
+    color: #facc15;
+  }
+  .text-yellow-500 {
+    color: #eab308;
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
