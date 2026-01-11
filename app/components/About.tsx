@@ -1,5 +1,4 @@
-import Image from 'next/image';
-
+import Image from "next/image";
 export default function About() {
   return (
     <section className="space-y-6 md:space-y-8">
@@ -22,27 +21,26 @@ export default function About() {
         <div className="flex-shrink-0 md:ml-8">
           <div className="w-28 h-28 md:w-36 md:h-36 lg:w-44 lg:h-44 rounded-full bg-yellow-50 overflow-hidden border-2 border-foreground/10 shadow-lg">
             {/* Placeholder for avatar - replace with your image */}
-            <div className="w-full h-full flex items-center justify-center bg-yellow-100 text-foreground/30">
+            {/* <div className="w-full h-full flex items-center justify-center bg-yellow-100 text-foreground/30">
               <span className="text-5xl md:text-6xl lg:text-7xl">👤</span>
-            </div>
-            {/* Uncomment and use when you have an avatar image:
+            </div> */}
+            {/* Uncomment and use when you have an avatar image: */}
             <Image
-              src="/avatar.png"
+              src="/profile.png"
               alt="Kirti"
               width={176}
               height={176}
               className="w-full h-full object-cover"
               priority
             />
-            */}
           </div>
         </div>
       </div>
 
       {/* Tagline */}
       <p className="text-xl md:text-2xl text-foreground/80 font-medium max-w-3xl">
-        Full Stack Developer focused on clean design, solid performance, and
-        user-first thinking.
+        Backend-oriented Full Stack Developer and Computer Science Engineering
+        student
       </p>
 
       {/* About Section */}
@@ -52,21 +50,20 @@ export default function About() {
         </h2>
         <div className="space-y-4">
           <p className="text-base md:text-lg text-foreground/70 leading-relaxed">
-            I am a Full Stack Developer who builds things that actually work, scale and people depend on. I handle backend development, write solid code for scalable applications, and pull off clean, professional frontends (no AI slop gradients, I know my way around modern tools and build UIs the right way).
+            Hi, I&apos;m Kirti, a backend-oriented full-stack developer and
+            Computer Science Engineering student. I love turning ideas into
+            functional, scalable applications using Node.js, TypeScript,
+            PostgreSQL, MongoDB, and React/Next.js.
           </p>
           <p className="text-base md:text-lg text-foreground/70 leading-relaxed">
-            I&apos;m a software developer who loves turning ideas into code.
-            Evolving with intention, not perfection, I&apos;m all about
-            learning, building, and getting better every day.
+            I&apos;ve built projects ranging from college management systems and
+            admin panels to real-world business websites, with a strong focus on
+            clean architecture and reliable APIs.
           </p>
           <p className="text-base md:text-lg text-foreground/70 leading-relaxed">
-            I&apos;m a Full Stack Web Developer with{" "}
-            <strong className="text-foreground">5+ years of coding</strong>{" "}
-            and{" "}
-            <strong className="text-foreground">
-              3+ years of professional experience
-            </strong>
-            , trying to make the internet a bit cooler one website at a time.
+            Beyond coding, I&apos;m a state-level basketball player and team
+            captain, which has taught me discipline, leadership, and
+            teamwork—skills I bring into my development work as well.
           </p>
         </div>
       </div>
