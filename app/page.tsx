@@ -1,6 +1,7 @@
 import About from "./components/About";
 import WorkExperience from "./components/WorkExperience";
 import Technologies from "./components/Technologies";
+import Contact from "./components/Contact";
 
 export default function Home() {
   return (
@@ -9,6 +10,7 @@ export default function Home() {
         <About />
         <WorkExperience />
         <Technologies />
+        <Contact />
       </div>
     </main>
   );

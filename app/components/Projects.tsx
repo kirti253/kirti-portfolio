@@ -69,10 +69,10 @@ export default function Projects() {
         {projects.map((project, index) => (
           <div
             key={index}
-            className="group flex flex-col bg-foreground/5 border border-foreground/10 rounded-lg overflow-hidden hover:border-foreground/20 transition-colors"
+            className="group flex flex-col bg-foreground/5 border border-foreground/10 rounded-xl overflow-hidden hover:border-foreground/20 transition-colors"
           >
             {/* Project Screenshot */}
-            <div className="relative w-full aspect-[4/3] bg-foreground/5 overflow-hidden">
+            <div className="relative w-full aspect-[4/3] bg-foreground/5 overflow-hidden rounded-t-xl">
               <Image
                 src={project.image}
                 alt={project.title}
