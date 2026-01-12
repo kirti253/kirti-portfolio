@@ -1,10 +1,12 @@
 import About from "./components/About";
+import WorkExperience from "./components/WorkExperience";
 
 export default function Home() {
   return (
     <main className="min-h-screen px-4 py-16 md:py-24">
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-6xl space-y-16 md:space-y-24">
         <About />
+        <WorkExperience />
       </div>
     </main>
   );
