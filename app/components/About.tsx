@@ -5,7 +5,7 @@ export default function About() {
       {/* Greeting, Badge, and Avatar Section */}
       <div className="flex flex-col md:flex-row md:items-start gap-3 md:gap-3">
         <div className="flex-1 max-w-2xl">
-          <div className="flex flex-col md:flex-row md:items-center md:gap-4 flex-wrap">
+          <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 flex-wrap">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
               <span className="text-foreground">Hey, I&apos;m </span>
               <span className="text-purple-400 md:text-purple-500">Kirti</span>
