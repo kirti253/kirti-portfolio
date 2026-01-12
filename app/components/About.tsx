@@ -3,8 +3,8 @@ export default function About() {
   return (
     <section className="space-y-6 md:space-y-8">
       {/* Greeting, Badge, and Avatar Section */}
-      <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
-        <div className="flex-1">
+      <div className="flex flex-col md:flex-row md:items-start gap-3 md:gap-3">
+        <div className="flex-1 max-w-2xl">
           <div className="flex flex-col md:flex-row md:items-center md:gap-4 flex-wrap">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
               <span className="text-foreground">Hey, I&apos;m </span>
@@ -18,15 +18,10 @@ export default function About() {
             </div>
           </div>
         </div>
-        <div className="flex-shrink-0 md:ml-8">
-          <div className="w-28 h-28 md:w-36 md:h-36 lg:w-44 lg:h-44 rounded-full bg-yellow-50 overflow-hidden border-2 border-foreground/10 shadow-lg">
-            {/* Placeholder for avatar - replace with your image */}
-            {/* <div className="w-full h-full flex items-center justify-center bg-yellow-100 text-foreground/30">
-              <span className="text-5xl md:text-6xl lg:text-7xl">👤</span>
-            </div> */}
-            {/* Uncomment and use when you have an avatar image: */}
+        <div className="md:ml-2">
+          <div className="w-28 h-28 md:w-36 md:h-36 lg:w-44 lg:h-44 rounded-full overflow-hidden border-2 border-foreground/10 shadow-lg">
             <Image
-              src="/profile.png"
+              src="/kirti.png"
               alt="Kirti"
               width={176}
               height={176}

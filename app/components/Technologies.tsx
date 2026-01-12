@@ -85,21 +85,21 @@ export default function Technologies() {
         Technologies that I have used
       </h1>
 
-      <div className="relative overflow-hidden">
-        <div className="flex gap-3 md:gap-4 animate-scroll">
+      <div className="relative overflow-hidden w-full">
+        <div className="flex gap-2 md:gap-3 lg:gap-4 animate-scroll">
           {duplicatedTechnologies.map((tech, index) => (
             <div
               key={index}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-foreground/5 border border-foreground/10 hover:border-foreground/20 transition-colors flex-shrink-0"
+              className="inline-flex items-center gap-1.5 md:gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-foreground/5 border border-foreground/10 hover:border-foreground/20 transition-colors shrink-0"
             >
               <div
-                className={`w-8 h-8 rounded-md ${tech.iconBg} ${
+                className={`w-6 h-6 md:w-8 md:h-8 rounded-md ${tech.iconBg} ${
                   tech.iconTextColor || "text-white"
-                } flex items-center justify-center text-xs font-bold`}
+                } flex items-center justify-center text-[10px] md:text-xs font-bold`}
               >
                 {tech.icon}
               </div>
-              <span className="text-sm md:text-base font-medium text-foreground whitespace-nowrap">
+              <span className="text-xs md:text-sm lg:text-base font-medium text-foreground whitespace-nowrap">
                 {tech.name}
               </span>
             </div>

@@ -8,8 +8,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-poppins);
 }
 
 /* Custom colors for better dark mode support */
@@ -32,7 +31,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-poppins), sans-serif;
 }
 
 @keyframes scroll {
@@ -45,7 +44,19 @@ body {
 }
 
 .animate-scroll {
-  animation: scroll 30s linear infinite;
+  animation: scroll 20s linear infinite;
+}
+
+@media (min-width: 768px) {
+  .animate-scroll {
+    animation: scroll 30s linear infinite;
+  }
+}
+
+@media (min-width: 1024px) {
+  .animate-scroll {
+    animation: scroll 40s linear infinite;
+  }
 }
 
 .animate-scroll:hover {
