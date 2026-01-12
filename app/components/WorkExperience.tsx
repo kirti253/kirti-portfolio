@@ -1,9 +1,12 @@
+import Link from "next/link";
+
 interface WorkExperience {
   role: string;
   company: string;
   location: string;
   dates: string;
   responsibilities: string[];
+  companyUrl?: string;
 }
 
 const experiences: WorkExperience[] = [
@@ -11,41 +14,23 @@ const experiences: WorkExperience[] = [
     role: "Backend Developer",
     company: "The Asian Kid",
     location: "Chandigarh",
-    dates: "Aug 2025 – Nov 2025",
+    dates: "Aug 2025 – Dec 2025",
+    companyUrl: "https://theasiankid.com",
     responsibilities: [
       "Designed RESTful APIs to facilitate data exchange between systems.",
       "Implemented database schemas and managed SQL data storage solutions.",
     ],
   },
   {
-    role: "Frontend Developer",
-    company: "MyCCET Project",
-    location: "Chandigarh",
-    dates: "Feb 2025 – May 2025",
+    role: "Full Stack Developer",
+    company: "Raj Bihari",
+    location: "Delhi",
+    dates: "Jun 2025 – Jul 2025",
+    companyUrl: "https://rajbihari.in",
     responsibilities: [
-      "Developed a student management website featuring user dashboards for enhanced navigation.",
-      "Integrated APIs for seamless data exchange.",
-      "Managed data flow to ensure accuracy and efficiency in operations.",
-    ],
-  },
-  {
-    role: "Frontend Developer",
-    company: "Jalshakti Project",
-    location: "Chandigarh",
-    dates: "Oct 2024 – Oct 2024",
-    responsibilities: [
-      "Designed UI for a water conservation blog website.",
-      "Created interactive layouts to promote awareness and user engagement.",
-    ],
-  },
-  {
-    role: "Backend Developer",
-    company: "TaskTracker",
-    location: "Chandigarh",
-    dates: "Jan 2025 – Jan 2025",
-    responsibilities: [
-      "Developed REST APIs for efficient user data management.",
-      "Managed databases and NoSQL systems ensuring data integrity and accessibility.",
+      "Developed and maintained e-commerce website for premium ethnic women clothing business.",
+      "Implemented responsive design and optimized user experience for online shopping.",
+      "Managed database systems and integrated payment solutions.",
     ],
   },
 ];
@@ -77,7 +62,20 @@ export default function WorkExperience() {
                   <div className="flex items-start justify-between gap-4">
                     <div>
                       <h2 className="text-lg md:text-xl font-bold text-foreground">
-                        {experience.role} | {experience.company}, {experience.location}
+                        {experience.role} |{" "}
+                        {experience.companyUrl ? (
+                          <Link
+                            href={experience.companyUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:text-foreground/80 transition-colors underline"
+                          >
+                            {experience.company}
+                          </Link>
+                        ) : (
+                          experience.company
+                        )}
+                        , {experience.location}
                       </h2>
                     </div>
                     <p className="text-sm md:text-base text-foreground/60 font-medium whitespace-nowrap">
