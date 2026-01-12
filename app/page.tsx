@@ -1,5 +1,6 @@
 import About from "./components/About";
 import WorkExperience from "./components/WorkExperience";
+import Technologies from "./components/Technologies";
 
 export default function Home() {
   return (
@@ -7,6 +8,7 @@ export default function Home() {
       <div className="mx-auto max-w-6xl space-y-16 md:space-y-24">
         <About />
         <WorkExperience />
+        <Technologies />
       </div>
     </main>
   );
