@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function Contact() {
   const [showEmailPopup, setShowEmailPopup] = useState(false);
   const [copied, setCopied] = useState(false);
-  const email = "kirti@example.com"; // Replace with your actual email
+  const email = "kirti25032007@gmail.com";
 
   const handleEmailClick = () => {
     setShowEmailPopup(true);
@@ -31,7 +31,7 @@ export default function Contact() {
   const contactLinks = [
     {
       name: "GitHub",
-      url: "https://github.com",
+      url: "https://github.com/kirti253",
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -52,7 +52,7 @@ export default function Contact() {
     },
     {
       name: "Twitter",
-      url: "https://twitter.com",
+      url: "https://x.com/Kirti_253",
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -72,7 +72,7 @@ export default function Contact() {
     },
     {
       name: "LinkedIn",
-      url: "https://linkedin.com",
+      url: "https://www.linkedin.com/in/kirti253/",
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -113,30 +113,6 @@ export default function Contact() {
         </svg>
       ),
       isEmail: true,
-    },
-    {
-      name: "Resume",
-      url: "/resume.pdf",
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="lucide lucide-file-text"
-        >
-          <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
-          <path d="M14 2v4a2 2 0 0 0 2 2h4" />
-          <path d="M10 9H8" />
-          <path d="M16 13H8" />
-          <path d="M16 17H8" />
-        </svg>
-      ),
     },
   ];
 
@@ -210,7 +186,7 @@ export default function Contact() {
               <Link
                 key={index}
                 href={link.url}
-                target={link.name === "Resume" ? "_blank" : "_blank"}
+                target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-4 py-3 rounded-lg bg-foreground/5 border border-foreground/10 hover:border-foreground/20 hover:bg-foreground/10 transition-colors text-foreground"
               >
