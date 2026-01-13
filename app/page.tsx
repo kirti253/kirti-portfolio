@@ -1,6 +1,7 @@
 import About from "./components/About";
 import WorkExperience from "./components/WorkExperience";
 import Technologies from "./components/Technologies";
+import GitHubContributions from "./components/GitHubContributions";
 import Contact from "./components/Contact";
 
 export default function Home() {
@@ -10,6 +11,7 @@ export default function Home() {
         <About />
         <WorkExperience />
         <Technologies />
+        <GitHubContributions />
         <Contact />
       </div>
     </main>
