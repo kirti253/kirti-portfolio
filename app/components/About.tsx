@@ -33,7 +33,7 @@ export default function About() {
       </div>
 
       {/* Tagline */}
-      <p className="text-xl md:text-2xl text-foreground/80 font-medium max-w-3xl">
+      <p className="text-lg sm:text-xl md:text-2xl text-foreground/80 font-medium max-w-3xl break-words">
         Backend-oriented Full Stack Developer and Computer Science Engineering
         student
       </p>

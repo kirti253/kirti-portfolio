@@ -23,7 +23,7 @@ export default function Header() {
             Kirti
           </Link>
         </div>
-        <ul className="flex items-center space-x-1 md:space-x-6">
+        <ul className="flex items-center space-x-1 md:space-x-4 lg:space-x-6">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
             return (
@@ -31,7 +31,7 @@ export default function Header() {
                 <Link
                   href={link.href}
                   className={`
-                    relative px-3 py-2 text-sm font-medium transition-colors
+                    relative px-2 py-2 md:px-3 text-xs md:text-sm font-medium transition-colors
                     hover:text-foreground
                     ${
                       isActive

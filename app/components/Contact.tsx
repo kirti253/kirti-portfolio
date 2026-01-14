@@ -125,21 +125,21 @@ export default function Contact() {
       <div className="space-y-8 md:space-y-10 relative">
         {/* Headline */}
         <div className="space-y-2">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif italic text-foreground">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif italic text-foreground break-words">
             Turning ideas into
           </h1>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-sans text-foreground/80">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-sans text-foreground/80 break-words">
             experiences.
           </h2>
         </div>
 
         {/* Email Popup */}
         {showEmailPopup && (
-          <div className="absolute top-20 md:top-24 left-0 md:left-1/4 z-20 bg-foreground/10 border border-foreground/20 rounded-lg p-4 backdrop-blur-sm shadow-lg">
-            <div className="flex items-center gap-3">
+          <div className="absolute top-20 md:top-24 left-0 right-0 md:left-1/4 md:right-auto z-20 bg-foreground/10 border border-foreground/20 rounded-lg p-3 md:p-4 backdrop-blur-sm shadow-lg max-w-full">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3">
               <button
                 onClick={handleCopyEmail}
-                className="p-2 rounded-md hover:bg-foreground/10 transition-colors"
+                className="p-2 rounded-md hover:bg-foreground/10 transition-colors shrink-0"
                 aria-label="Copy email"
               >
                 <svg
@@ -158,13 +158,19 @@ export default function Contact() {
                   <path d="M4 16c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2h8c1.1 0 2 .9 2 2" />
                 </svg>
               </button>
-              <span className="text-sm text-foreground/60">COPY EMAIL</span>
-              <span className="text-base font-medium text-foreground">
-                {email}
-              </span>
-              {copied && (
-                <span className="text-sm text-green-400 ml-2">✓ Copied!</span>
-              )}
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-1 sm:gap-3 min-w-0 flex-1">
+                <span className="text-xs sm:text-sm text-foreground/60 whitespace-nowrap">
+                  COPY EMAIL
+                </span>
+                <span className="text-sm sm:text-base font-medium text-foreground break-all">
+                  {email}
+                </span>
+                {copied && (
+                  <span className="text-xs sm:text-sm text-green-400 whitespace-nowrap">
+                    ✓ Copied!
+                  </span>
+                )}
+              </div>
             </div>
           </div>
         )}
