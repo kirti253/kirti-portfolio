@@ -12,6 +12,15 @@ interface Project {
 
 const projects: Project[] = [
   {
+    title: "Savekey Technology",
+    technologies: "Next.js / Tailwind / TypeScript",
+    description:
+      "Innovative IT solutions crafted for performance, growth and effortless scalability.",
+    image: "/savekey.png",
+    liveUrl: "https://savekeytechnology.com",
+    repoUrl: "https://github.com",
+  },
+  {
     title: "The Asian Kid",
     technologies: "Next.js / Tailwind / postgreSQL / Node.js",
     description:
