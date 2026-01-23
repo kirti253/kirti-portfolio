@@ -21,12 +21,12 @@ const projects: Project[] = [
     repoUrl: "https://github.com",
   },
   {
-    title: "The Asian Kid",
-    technologies: "Next.js / Tailwind / postgreSQL / Node.js",
+    title: "Enstoppe Solutions",
+    technologies: "Next.js / Tailwind / TypeScript",
     description:
-      "A full-featured coaching website that connects students and teachers, creating a smooth, engaging learning environment. It has multiple user interfaces, a guest website, student dashboard, teacher dashboard and admin panel.",
-    image: "/asian.png",
-    liveUrl: "https://theasiankid.com",
+      "Global IT solution company delivering innovative IT solutions and services worldwide with cutting-edge technology and unmatched expertise.",
+    image: "/enstop.png",
+    liveUrl: "https://www.enstoppesolutions.com",
     repoUrl: "https://github.com",
   },
   {
@@ -63,6 +63,15 @@ const projects: Project[] = [
       "A clothing business based in Delhi, India sells premium ethnic women clothing",
     image: "/rajbihari.png",
     liveUrl: "https://rajbihari.in",
+    repoUrl: "https://github.com",
+  },
+  {
+    title: "The Asian Kid",
+    technologies: "Next.js / Tailwind / postgreSQL / Node.js",
+    description:
+      "A full-featured coaching website that connects students and teachers, creating a smooth, engaging learning environment. It has multiple user interfaces, a guest website, student dashboard, teacher dashboard and admin panel.",
+    image: "/asian.png",
+    liveUrl: "https://theasiankid.com",
     repoUrl: "https://github.com",
   },
 ];
