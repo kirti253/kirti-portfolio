@@ -1,32 +1,11 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 
 export default function Contact() {
-  const [showEmailPopup, setShowEmailPopup] = useState(false);
-  const [copied, setCopied] = useState(false);
   const email = "kirti25032007@gmail.com";
-
-  const handleEmailClick = () => {
-    setShowEmailPopup(true);
-    setTimeout(() => {
-      setShowEmailPopup(false);
-    }, 3000);
-  };
-
-  const handleCopyEmail = async () => {
-    try {
-      await navigator.clipboard.writeText(email);
-      setCopied(true);
-      setTimeout(() => {
-        setCopied(false);
-        setShowEmailPopup(false);
-      }, 2000);
-    } catch (err) {
-      console.error("Failed to copy email:", err);
-    }
-  };
+  const subject = "Hello Kirti";
+  const mailtoHref = `mailto:${email}?subject=${encodeURIComponent(subject)}`;
 
   const contactLinks = [
     {
@@ -94,7 +73,7 @@ export default function Contact() {
     },
     {
       name: "Email",
-      url: "#",
+      url: mailtoHref,
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -133,61 +112,19 @@ export default function Contact() {
           </h2>
         </div>
 
-        {/* Email Popup */}
-        {showEmailPopup && (
-          <div className="absolute top-20 md:top-24 left-0 right-0 md:left-1/4 md:right-auto z-20 bg-foreground/10 border border-foreground/20 rounded-lg p-3 md:p-4 backdrop-blur-sm shadow-lg max-w-full">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3">
-              <button
-                onClick={handleCopyEmail}
-                className="p-2 rounded-md hover:bg-foreground/10 transition-colors shrink-0"
-                aria-label="Copy email"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="lucide lucide-copy"
-                >
-                  <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
-                  <path d="M4 16c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2h8c1.1 0 2 .9 2 2" />
-                </svg>
-              </button>
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-1 sm:gap-3 min-w-0 flex-1">
-                <span className="text-xs sm:text-sm text-foreground/60 whitespace-nowrap">
-                  COPY EMAIL
-                </span>
-                <span className="text-sm sm:text-base font-medium text-foreground break-all">
-                  {email}
-                </span>
-                {copied && (
-                  <span className="text-xs sm:text-sm text-green-400 whitespace-nowrap">
-                    ✓ Copied!
-                  </span>
-                )}
-              </div>
-            </div>
-          </div>
-        )}
-
         {/* Contact Buttons */}
         <div className="flex flex-wrap gap-3 md:gap-4">
           {contactLinks.map((link, index) => {
             const isEmail = link.isEmail;
             return isEmail ? (
-              <button
+              <a
                 key={index}
-                onClick={handleEmailClick}
+                href={link.url}
                 className="flex items-center gap-2 px-4 py-3 rounded-lg bg-foreground/5 border border-green-500/30 hover:border-green-500/50 hover:bg-foreground/10 transition-colors text-foreground"
               >
                 {link.icon}
                 <span className="text-sm font-medium">{link.name}</span>
-              </button>
+              </a>
             ) : (
               <Link
                 key={index}
