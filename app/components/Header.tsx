@@ -13,13 +13,12 @@ const navLinks = [
 
 export default function Header() {
   const pathname = usePathname();
-  const [menuOpen, setMenuOpen] = useState(false);
   const [indicator, setIndicator] = useState({ left: 0, width: 0, opacity: 0 });
 
   const navRef = useRef<HTMLDivElement | null>(null);
   const linkRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
 
-  // Measure the active link and move the pill indicator under it
+  // Measure the active link and move the underline indicator under it
   useEffect(() => {
     const activeEl = linkRefs.current[pathname];
     const navEl = navRef.current;
@@ -36,13 +35,8 @@ export default function Header() {
     }
   }, [pathname]);
 
-  // Close mobile menu on route change
-  useEffect(() => {
-    setMenuOpen(false);
-  }, [pathname]);
-
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-foreground/10 bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60">
+    <header className="w-full border-b border-foreground/10 bg-background">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-6">
         {/* Logo */}
         <Link href="/" className="group flex items-center gap-2.5">
@@ -61,17 +55,13 @@ export default function Header() {
           </span>
         </Link>
 
-        {/* Desktop nav */}
+        {/* Nav — always visible, scales down on small screens */}
         <nav
           ref={navRef}
-          className="relative hidden items-center gap-8 md:flex"
+          className="relative flex items-center gap-4 sm:gap-6 md:gap-8"
         >
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
-
-            const linkRefs = useRef<Record<string, HTMLAnchorElement | null>>(
-              {},
-            );
             return (
               <Link
                 key={link.href}
@@ -79,7 +69,7 @@ export default function Header() {
                 ref={(el) => {
                   linkRefs.current[link.href] = el;
                 }}
-                className={`relative py-1 text-sm font-medium tracking-wide transition-colors duration-200 ${
+                className={`relative py-1 text-xs font-medium tracking-wide transition-colors duration-200 sm:text-sm ${
                   isActive
                     ? "text-foreground"
                     : "text-foreground/50 hover:text-foreground/80"
@@ -98,65 +88,6 @@ export default function Header() {
               opacity: indicator.opacity,
             }}
           />
-        </nav>
-
-        {/* Mobile menu button */}
-        <button
-          type="button"
-          onClick={() => setMenuOpen((v) => !v)}
-          aria-label={menuOpen ? "Close menu" : "Open menu"}
-          aria-expanded={menuOpen}
-          className="flex h-9 w-9 items-center justify-center rounded-full border border-foreground/10 text-foreground/80 transition-colors hover:bg-foreground/5 md:hidden"
-        >
-          <svg
-            width="18"
-            height="18"
-            viewBox="0 0 18 18"
-            fill="none"
-            className="transition-transform duration-200"
-          >
-            {menuOpen ? (
-              <path
-                d="M3 3L15 15M15 3L3 15"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-              />
-            ) : (
-              <path
-                d="M2 5H16M2 9H16M2 13H16"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-              />
-            )}
-          </svg>
-        </button>
-      </div>
-
-      {/* Mobile menu panel */}
-      <div
-        className={`overflow-hidden transition-[max-height] duration-300 ease-out md:hidden ${
-          menuOpen ? "max-h-60" : "max-h-0"
-        }`}
-      >
-        <nav className="flex flex-col gap-1 border-t border-foreground/10 px-4 py-3">
-          {navLinks.map((link) => {
-            const isActive = pathname === link.href;
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
-                  isActive
-                    ? "bg-foreground/[0.06] text-foreground"
-                    : "text-foreground/70 hover:bg-foreground/[0.04] hover:text-foreground"
-                }`}
-              >
-                {link.label}
-              </Link>
-            );
-          })}
         </nav>
       </div>
     </header>
