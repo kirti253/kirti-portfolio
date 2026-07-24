@@ -4,6 +4,22 @@ import { useEffect, useRef } from "react";
 import * as THREE from "three";
 
 const PARTICLE_COUNT = 320;
+const MOBILE_PARTICLE_COUNT = 190;
+const TABLET_PARTICLE_COUNT = 250;
+
+type LayoutConfig = {
+  cameraZ: number;
+  fov: number;
+  nodePosition: [number, number, number];
+  nodeScale: number;
+  particleCount: number;
+  particleOpacity: number;
+  particleSize: number;
+  particleScale: number;
+  pixelRatio: number;
+  ribbonPosition: [number, number, number];
+  ribbonScale: number;
+};
 
 function createParticlePositions() {
   const positions = new Float32Array(PARTICLE_COUNT * 3);
@@ -48,12 +64,7 @@ export default function ThreeBackground() {
       "(prefers-reduced-motion: reduce)"
     );
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(
-      55,
-      window.innerWidth / window.innerHeight,
-      0.1,
-      100
-    );
+    const camera = new THREE.PerspectiveCamera(55, 1, 0.1, 100);
     const renderer = new THREE.WebGLRenderer({
       alpha: true,
       antialias: true,
@@ -61,14 +72,17 @@ export default function ThreeBackground() {
     });
     const pointer = new THREE.Vector2(0, 0);
     const targetPointer = new THREE.Vector2(0, 0);
+    let width = container.clientWidth || window.innerWidth;
+    let height = container.clientHeight || window.innerHeight;
     let frameId = 0;
 
-    camera.position.set(0, 0, 8);
+    camera.position.set(0, 0, 8.5);
     renderer.setClearColor(0x000000, 0);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.domElement.className = "three-background-canvas";
     container.appendChild(renderer.domElement);
+
+    const visualGroup = new THREE.Group();
+    scene.add(visualGroup);
 
     const { colors, positions } = createParticlePositions();
     const particleGeometry = new THREE.BufferGeometry();
@@ -89,7 +103,7 @@ export default function ThreeBackground() {
     });
 
     const particles = new THREE.Points(particleGeometry, particleMaterial);
-    scene.add(particles);
+    visualGroup.add(particles);
 
     const ribbonGeometry = new THREE.TorusKnotGeometry(1.45, 0.035, 180, 12);
     const ribbonMaterial = new THREE.MeshBasicMaterial({
@@ -99,9 +113,8 @@ export default function ThreeBackground() {
       wireframe: true,
     });
     const ribbon = new THREE.Mesh(ribbonGeometry, ribbonMaterial);
-    ribbon.position.set(3.3, 1.2, -1.5);
     ribbon.rotation.set(0.55, 0.2, 0.1);
-    scene.add(ribbon);
+    visualGroup.add(ribbon);
 
     const nodeGeometry = new THREE.IcosahedronGeometry(1.55, 2);
     const nodeMaterial = new THREE.MeshBasicMaterial({
@@ -111,19 +124,89 @@ export default function ThreeBackground() {
       wireframe: true,
     });
     const node = new THREE.Mesh(nodeGeometry, nodeMaterial);
-    node.position.set(-3.6, -1.4, -2.2);
-    scene.add(node);
+    visualGroup.add(node);
 
     const onPointerMove = (event: PointerEvent) => {
-      targetPointer.x = (event.clientX / window.innerWidth - 0.5) * 2;
-      targetPointer.y = (event.clientY / window.innerHeight - 0.5) * 2;
+      targetPointer.x = (event.clientX / width - 0.5) * 2;
+      targetPointer.y = (event.clientY / height - 0.5) * 2;
     };
 
-    const onResize = () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
+    const getLayoutConfig = (): LayoutConfig => {
+      const isMobile = width < 640;
+      const isTablet = width >= 640 && width < 1024;
+      const isShort = height < 720;
+
+      if (isMobile) {
+        return {
+          cameraZ: 9.8,
+          fov: isShort ? 68 : 64,
+          nodePosition: [-1.45, -2.35, -2.6],
+          nodeScale: 0.72,
+          particleCount: MOBILE_PARTICLE_COUNT,
+          particleOpacity: 0.62,
+          particleSize: 0.082,
+          particleScale: 0.78,
+          pixelRatio: Math.min(window.devicePixelRatio, 1.45),
+          ribbonPosition: [1.5, 2.35, -2.1],
+          ribbonScale: 0.68,
+        };
+      }
+
+      if (isTablet) {
+        return {
+          cameraZ: 8.9,
+          fov: 59,
+          nodePosition: [-2.45, -1.65, -2.3],
+          nodeScale: 0.86,
+          particleCount: TABLET_PARTICLE_COUNT,
+          particleOpacity: 0.72,
+          particleSize: 0.074,
+          particleScale: 0.9,
+          pixelRatio: Math.min(window.devicePixelRatio, 1.75),
+          ribbonPosition: [2.55, 1.55, -1.8],
+          ribbonScale: 0.84,
+        };
+      }
+
+      return {
+        cameraZ: 8,
+        fov: isShort ? 59 : 55,
+        nodePosition: [-3.6, -1.4, -2.2],
+        nodeScale: 1,
+        particleCount: PARTICLE_COUNT,
+        particleOpacity: 0.82,
+        particleSize: 0.065,
+        particleScale: 1,
+        pixelRatio: Math.min(window.devicePixelRatio, 2),
+        ribbonPosition: [3.3, 1.2, -1.5],
+        ribbonScale: 1,
+      };
+    };
+
+    const applyResponsiveLayout = () => {
+      width = container.clientWidth || window.innerWidth;
+      height = container.clientHeight || window.innerHeight;
+
+      const layout = getLayoutConfig();
+
+      camera.aspect = width / height;
+      camera.fov = layout.fov;
+      camera.position.z = layout.cameraZ;
       camera.updateProjectionMatrix();
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setPixelRatio(layout.pixelRatio);
+      renderer.setSize(width, height, false);
+
+      particleGeometry.setDrawRange(0, layout.particleCount);
+      particleMaterial.opacity = layout.particleOpacity;
+      particleMaterial.size = layout.particleSize;
+      particles.scale.setScalar(layout.particleScale);
+
+      ribbon.position.set(...layout.ribbonPosition);
+      ribbon.scale.setScalar(layout.ribbonScale);
+      node.position.set(...layout.nodePosition);
+      node.scale.setScalar(layout.nodeScale);
+
+      renderScene();
     };
 
     const renderScene = () => {
@@ -149,8 +232,12 @@ export default function ThreeBackground() {
       frameId = window.requestAnimationFrame(animate);
     };
 
+    const resizeObserver = new ResizeObserver(applyResponsiveLayout);
+    resizeObserver.observe(container);
     window.addEventListener("pointermove", onPointerMove);
-    window.addEventListener("resize", onResize);
+    window.addEventListener("resize", applyResponsiveLayout);
+
+    applyResponsiveLayout();
 
     if (prefersReducedMotion.matches) {
       renderScene();
@@ -160,9 +247,12 @@ export default function ThreeBackground() {
 
     return () => {
       window.cancelAnimationFrame(frameId);
+      resizeObserver.disconnect();
       window.removeEventListener("pointermove", onPointerMove);
-      window.removeEventListener("resize", onResize);
-      container.removeChild(renderer.domElement);
+      window.removeEventListener("resize", applyResponsiveLayout);
+      if (container.contains(renderer.domElement)) {
+        container.removeChild(renderer.domElement);
+      }
       particleGeometry.dispose();
       particleMaterial.dispose();
       particleMaterial.alphaMap?.dispose();
