@@ -48,15 +48,6 @@ const projects: Project[] = [
     repoUrl: "https://github.com/aayushchugh/myccet-client",
   },
   {
-    title: "Project Jalshakti",
-    technologies: "EJS / MongoDB / Javascript / Node.js",
-    description:
-      "Project jalshakti was blogging website made for SIH. It was a website made to share knowledge related to water. It was just like wikipedia but for water related knowledge.",
-    image: "/jalshakti.png",
-    liveUrl: "https://jalshakti.infyfix.com",
-    repoUrl: "https://github.com",
-  },
-  {
     title: "Time Tracker",
     technologies: "React / TypeScript / Tailwind / nodejs / mongDB",
     description:
