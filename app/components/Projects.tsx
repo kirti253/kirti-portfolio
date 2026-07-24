@@ -12,6 +12,15 @@ interface Project {
 
 const projects: Project[] = [
   {
+    title: "The Assembly House",
+    technologies: "Next.js / Tailwind / TypeScript",
+    description:
+      "Premium clothing manufacturing for corporate, educational, and industrial sectors — built for comfort, designed for identity.",
+    image: "/assembly.png",
+    liveUrl: "https://theassemblyhouse.vercel.app",
+    repoUrl: "https://github.com",
+  },
+  {
     title: "Savekey Technology",
     technologies: "Next.js / Tailwind / TypeScript",
     description:
