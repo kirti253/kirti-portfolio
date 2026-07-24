@@ -16,8 +16,8 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [indicator, setIndicator] = useState({ left: 0, width: 0, opacity: 0 });
 
-  const navRef = useRef(null);
-  const linkRefs = useRef({});
+  const navRef = useRef<HTMLDivElement | null>(null);
+  const linkRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
 
   // Measure the active link and move the pill indicator under it
   useEffect(() => {
@@ -68,6 +68,10 @@ export default function Header() {
         >
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
+
+            const linkRefs = useRef<Record<string, HTMLAnchorElement | null>>(
+              {},
+            );
             return (
               <Link
                 key={link.href}
