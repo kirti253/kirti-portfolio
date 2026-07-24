@@ -37,7 +37,7 @@ export default function About() {
 
       {/* Tagline */}
       <p className="text-lg sm:text-xl md:text-2xl text-foreground/80 font-medium max-w-4xl leading-relaxed">
-        Backend-focused Full Stack Developer • Building{" "}
+        Full Stack Developer • Building{" "}
         <a
           href="https://www.baatcheetai.com"
           target="_blank"
@@ -57,12 +57,12 @@ export default function About() {
 
         <div className="space-y-5">
           <p className="text-base md:text-lg text-foreground/70 leading-relaxed">
-            Hi, I&apos;m Kirti, a backend-focused full stack developer and
-            Computer Science Engineering student passionate about building
-            products that solve meaningful real-world problems. I enjoy
-            architecting scalable backend systems, designing clean APIs, and
-            creating seamless user experiences using Node.js, TypeScript,
-            PostgreSQL, MongoDB, React, and Next.js.
+            Hi, I&apos;m Kirti, a Full Stack Developer and Computer Science
+            Engineering student passionate about building products that solve
+            meaningful real-world problems. I enjoy architecting scalable
+            backend systems, designing clean APIs, and creating seamless user
+            experiences using Node.js, TypeScript, PostgreSQL, MongoDB, React,
+            and Next.js.
           </p>
 
           <p className="text-base md:text-lg text-foreground/70 leading-relaxed">

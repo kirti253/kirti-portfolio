@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Manrope } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-const poppins = Poppins({
-  weight: ["300", "400", "500", "600", "700"],
+const manrope = Manrope({
   subsets: ["latin"],
-  variable: "--font-poppins",
+  variable: "--font-manrope",
 });
 
 export const metadata: Metadata = {
-  title: "kirti's portfolio",
-  description: "kirti's portfolio",
+  title: "Kirti | Full Stack Developer",
+  description:
+    "Full Stack Developer building BaatcheetAI, a voice-first AI companion.",
 };
 
 export default function RootLayout({
@@ -22,9 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${poppins.variable} font-sans antialiased`}
-      >
+      <body className={`${manrope.variable} font-sans antialiased`}>
         <Header />
         {children}
         <Footer />
