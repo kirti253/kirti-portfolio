@@ -17,7 +17,7 @@ const projects: Project[] = [
     description:
       "Premium clothing manufacturing for corporate, educational, and industrial sectors — built for comfort, designed for identity.",
     image: "/assembly.png",
-    liveUrl: "https://theassemblyhouse.vercel.app",
+    liveUrl: "https://www.theassemblyhouse.in",
     repoUrl: "https://github.com",
   },
   {
@@ -56,15 +56,15 @@ const projects: Project[] = [
     liveUrl: "https://timetrackerr.vercel.app",
     repoUrl: "https://github.com/kirti253/lockedin",
   },
-  {
-    title: "Raj Bihari",
-    technologies: "Liquid / HTML / CSS / MySQL",
-    description:
-      "A clothing business based in Delhi, India sells premium ethnic women clothing",
-    image: "/rajbihari.png",
-    liveUrl: "https://rajbihari.in",
-    repoUrl: "https://github.com",
-  },
+  // {
+  //   title: "Raj Bihari",
+  //   technologies: "Liquid / HTML / CSS / MySQL",
+  //   description:
+  //     "A clothing business based in Delhi, India sells premium ethnic women clothing",
+  //   image: "/rajbihari.png",
+  //   liveUrl: "https://rajbihari.in",
+  //   repoUrl: "https://github.com",
+  // },
   {
     title: "The Asian Kid",
     technologies: "Next.js / Tailwind / postgreSQL / Node.js",
