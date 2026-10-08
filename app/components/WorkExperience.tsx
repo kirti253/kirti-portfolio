@@ -26,7 +26,6 @@ const experiences: WorkExperience[] = [
     company: "Raj Bihari",
     location: "Delhi",
     dates: "Jun 2025 – Jul 2025",
-    companyUrl: "https://rajbihari.in",
     responsibilities: [
       "Developed and maintained e-commerce website for premium ethnic women clothing business.",
       "Implemented responsive design and optimized user experience for online shopping.",
